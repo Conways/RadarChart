@@ -84,10 +84,10 @@ public class RadarChart extends View {
         TypedArray ta = getContext().obtainStyledAttributes(attrs, R.styleable.RadarChart);
         roundLineWith = ta.getDimension(R.styleable.RadarChart_roundLineWith, 1);
         roundLineColor = ta.getColor(R.styleable.RadarChart_roundLineColor, 0xff000000);
-        roundColor = ta.getColor(R.styleable.RadarChart_roundColor, 0xfffffff);
+        roundColor = ta.getColor(R.styleable.RadarChart_roundColor, 0xff000000);
 
         itemTextSize = ta.getDimension(R.styleable.RadarChart_itemTextSize, 1);
-        itemTextColor = ta.getColor(R.styleable.RadarChart_itemTextColor, 0xffffffff);
+        itemTextColor = ta.getColor(R.styleable.RadarChart_itemTextColor, 0xff000000);
         itemLineColor = ta.getColor(R.styleable.RadarChart_itemLineColor, 0xff000000);
         itemLineWith = ta.getDimension(R.styleable.RadarChart_itemLineWith, 1);
 
@@ -193,6 +193,8 @@ public class RadarChart extends View {
 
         roundPath.reset();
         for (int i = 0; i < list.size(); i++) {
+            String str=list.get(i).getItemName();
+            itemTextPaint.getTextBounds(str,0,str.length(),rect);
             findRoundPointByPositon(i);
             canvas.drawLine(mWith / 2, mHeight / 2, roundPoint.getX(), roundPoint.getY(), itemLinePaint);
             if (i == 0) {
@@ -200,13 +202,10 @@ public class RadarChart extends View {
             } else {
                 roundPath.lineTo(roundPoint.getX(), roundPoint.getY());
             }
-            String str=list.get(i).getItemName();
-            itemTextPaint.getTextBounds(str,0,str.length(),rect);
-            findLeftBottomPointByPoint(roundPoint,i);
-//            canvas.drawText(str, leftBottomPoint.getX(), leftBottomPoint.getY(), itemTextPaint);
-//            canvas.drawPoint(leftBottomPoint.getX(),leftBottomPoint.getY(),itemTextPaint);
-            canvas.drawCircle(leftBottomPoint.getX(),leftBottomPoint.getY(),dip2px(1),itemTextPaint);
-//            canvas.drawText(str,);
+//            findLeftBottomPointByPoint(roundPoint,i);
+            canvas.drawText(str, leftBottomPoint.getX()-rect.width()/2, leftBottomPoint.getY()
+                    +rect.height()/2,
+                    itemTextPaint);
 
         }
         roundPath.close();
@@ -237,6 +236,11 @@ public class RadarChart extends View {
         int y = (int) (mHeight / 2 - itemRadius * Math.cos(Math.PI * angle / 180));
         roundPoint.setX(x);
         roundPoint.setY(y);
+        double radius=Math.sqrt(rect.width()*rect.width()/4+rect.height()*rect.height()/4);
+        int x1 = (int) (mWith / 2 + (itemRadius+radius) * Math.sin(Math.PI * angle / 180));
+        int y1 = (int) (mHeight / 2 - (itemRadius+radius) * Math.cos(Math.PI * angle / 180));
+        leftBottomPoint.setX(x1);
+        leftBottomPoint.setY(y1);
     }
 
 
