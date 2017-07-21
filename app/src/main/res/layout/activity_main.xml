@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:radaData="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <com.conways.radarchart.RadarChart
+        android:layout_width="240dp"
+        android:layout_height="240dp"
+        android:background="#0fe8e800"
+        android:layout_gravity="center_horizontal"
+        radaData:deflectionAngle="0"
+        radaData:itemRadius="90dp"
+        radaData:itemLineWith="1dp"
+        radaData:itemLineColor="@color/colorAccent"
+        radaData:roundLineColor="@color/colorPrimaryDark"
+        radaData:roundLineWith="2dp"
+        radaData:roundColor="#3f00ffff"
+        radaData:itemTextSize="18sp"
+        radaData:itemTextColor="@color/colorAccent"
+        radaData:abilityRoundLineWith="1dp"
+        radaData:abilityRoundLineColor="@color/colorPrimaryDark"
+        radaData:abliityRoundColor="#5fff0000"
+        android:id="@+id/radarChart"/>
+
+    <SeekBar
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:id="@+id/seekBar"/>
+</LinearLayout>

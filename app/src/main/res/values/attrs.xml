@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <declare-styleable name="RadarChart">
+        <attr name="roundLineWith" format="dimension"/>
+        <attr name="roundLineColor" format="color"/>
+        <attr name="roundColor" format="color"/>
+
+        <attr name="itemTextSize" format="dimension"/>
+        <attr name="itemTextColor" format="color"/>
+        <attr name="itemLineColor" format="color"/>
+        <attr name="itemLineWith" format="dimension"/>
+
+        <attr name="abilityRoundLineColor" format="color"/>
+        <attr name="abilityRoundLineWith" format="dimension"/>
+        <attr name="abliityRoundColor" format="color"/>
+        <attr name="max" format="integer"/>
+        <attr name="deflectionAngle" format="integer"/>
+        <attr name="itemRadius" format="dimension"/>
+    </declare-styleable>
+
+</resources>
