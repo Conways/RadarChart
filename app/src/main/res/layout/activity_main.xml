@@ -7,8 +7,8 @@
     android:orientation="vertical">
 
     <com.conways.radarchart.RadarChart
-        android:layout_width="240dp"
-        android:layout_height="240dp"
+        android:layout_width="match_parent"
+        android:layout_height="480dp"
         android:background="#0fe8e800"
         android:layout_gravity="center_horizontal"
         radaData:deflectionAngle="0"
