@@ -157,6 +157,15 @@ public class RadarChart extends View {
         invalidate();
     }
 
+    public void setList(List<RadarData> list) {
+        if (null==list||list.size()<=2){
+            throw new IllegalArgumentException("list's size must biger than 2");
+        }
+        this.list.clear();
+        this.list.addAll(list);
+        invalidate();
+    }
+
     @Override
     protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
         int widthMeasureMode = MeasureSpec.getMode(widthMeasureSpec);
@@ -202,7 +211,6 @@ public class RadarChart extends View {
             } else {
                 roundPath.lineTo(roundPoint.getX(), roundPoint.getY());
             }
-//            findLeftBottomPointByPoint(roundPoint,i);
             canvas.drawText(str, leftBottomPoint.getX()-rect.width()/2, leftBottomPoint.getY()
                     +rect.height()/2,
                     itemTextPaint);
@@ -243,15 +251,6 @@ public class RadarChart extends View {
         leftBottomPoint.setY(y1);
     }
 
-
-
-    private void findLeftBottomPointByPoint(Point point,int position){
-        int angle = deflectionAngle + position * 360 / list.size();
-        int x= (int) (point.getX()+rect.width()*(Math.sin(Math.PI * angle / 180)-1));
-        int y= (int) (point.getY()+rect.height()*Math.abs(Math.sin(Math.PI * angle / 360)));
-        leftBottomPoint.setY(y);
-        leftBottomPoint.setX(x);
-    }
 
 
     private void findAblityPointByPosition(int position) {
